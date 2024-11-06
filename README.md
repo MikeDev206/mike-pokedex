@@ -1,5 +1,5 @@
 ## mike-pokedex
-**CRUD Pokedex for testing
+CRUD Pokedex for testing
 
 ## Descripción del Proyecto
 Este proyecto consiste en una Pokedex que consume la PokeAPI y permite gestionar entrenadores de pokémon.
