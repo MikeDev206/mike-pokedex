@@ -7,7 +7,8 @@ Este proyecto consiste en una Pokedex que consume la PokeAPI y permite gestionar
 ## Especificaciones
 - [Módulo Uno: Consumo de PokeAPI, Paginación, Filtros, y Generación de PDF](#módulo-uno-consumo-de-pokeapi-paginación-filtros-y-generación-de-pdf)
 - [Módulo Dos: CRUD de Entrenadores y Generación de CSV](#módulo-dos-crud-de-entrenadores-y-generación-de-csv)
-- Puedes ver y seguir el flujo de trabajo de este proyecto en mi [Tablero de GitHub Projects]([https://github.com/usuario/repo/projects/1](https://github.com/users/MikeDev206/projects/1/views/1?pane=issue&itemId=86258522)).
+
+Para seguir el flujo de trabajo del proyecto, visita el [Tablero de GitHub Projects](https://github.com/users/MikeDev206/projects/1/views/1?pane=issue&itemId=86258522).
 
 ## Arquitectura del Proyecto
 
