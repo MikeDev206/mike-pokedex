@@ -1,59 +1,51 @@
 const Trainer = require('../models/Trainer');
 
-//obtener los entrenadores (todos)
+//obtiene todos los entrenadores
 const getTrainers = async (req, res) => {
 	try {
-		const trainers = await Trainer.find().sort({ name: 1 }); // Ordenar alfabéticamente
+		const trainers = await Trainer.find().sort({ nombre: 1 });
 		res.json(trainers);
 	} catch (error) {
-		res.status(500).json({ message: 'Error al obtener entrenadores', error: error.message });
+		res.status(500).json({ error: 'Error al obtener los entrenadores' });
 	}
 };
 
-//crear nuevo entrenador
+//crea un nuevo entrenador
 const createTrainer = async (req, res) => {
-	const { name, lastName, phone, badges } = req.body;
-	if (!name || !lastName || !phone || !badges) {
-		return res.status(400).json({ message: 'Todos los campos son requeridos' });
-	}
-
 	try {
-		const newTrainer = new Trainer({ name, lastName, phone, badges });
-		await newTrainer.save();
-		res.status(201).json(newTrainer);
+		const trainer = new Trainer(req.body);
+		await trainer.save();
+		res.status(201).json(trainer);
 	} catch (error) {
-		res.status(500).json({ message: 'Error al crear entrenador', error: error.message });
+		res.status(400).json({ error: 'Falló crear un entrenador' });
 	}
 };
 
-//actualiza un entrenador
+//actualiza un entrenador por ID
 const updateTrainer = async (req, res) => {
-	const { id } = req.params;
-	const { name, lastName, phone, badges } = req.body;
-
 	try {
-		const trainer = await Trainer.findByIdAndUpdate(
-			id,
-			{ name, lastName, phone, badges },
-			{ new: true }
-		);
-		if (!trainer) return res.status(404).json({ message: 'Entrenador no encontrado' });
+		const { id } = req.params;
+		const trainer = await Trainer.findByIdAndUpdate(id, req.body, { new: true });
+		if (!trainer) {
+			return res.status(404).json({ error: 'Entrenador no encontrado' });
+		}
 		res.json(trainer);
 	} catch (error) {
-		res.status(500).json({ message: 'Error al actualizar entrenador', error: error.message });
+		res.status(400).json({ error: 'No se pudo actualizar el entrenador' });
 	}
 };
 
-//elimina un entrenador
+//eliminar un entrenador por ID
 const deleteTrainer = async (req, res) => {
-	const { id } = req.params;
-
 	try {
+		const { id } = req.params;
 		const trainer = await Trainer.findByIdAndDelete(id);
-		if (!trainer) return res.status(404).json({ message: 'Entrenador no encontrado' });
-		res.status(204).end();
+		if (!trainer) {
+			return res.status(404).json({ error: 'Entrenador no encontrado' });
+		}
+		res.json({ message: 'Entrenador eliminado' });
 	} catch (error) {
-		res.status(500).json({ message: 'Error al eliminar entrenador', error: error.message });
+		res.status(400).json({ error: 'No se pudo eliminar el entrenador' });
 	}
 };
 
