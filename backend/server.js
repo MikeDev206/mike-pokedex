@@ -3,6 +3,7 @@ require('dotenv').config();//esto es para cargar las variables de entorno
 const express = require('express');
 const connectDB = require('./config/db');
 const trainerRoutes = require('./routes/trainerRoutes');
+const pokemonRoutes = require('./routes/pokemonRoutes');
 
 const app = express();
 
@@ -10,6 +11,8 @@ const app = express();
 connectDB();
 
 app.use(express.json());
+
+app.use('/api', pokemonRoutes);
 
 //definir la ruta de prueba
 app.get('/', (req, res) => {
