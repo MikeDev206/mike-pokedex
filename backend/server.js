@@ -1,29 +1,24 @@
-//servidor del back
-require('dotenv').config();//esto es para cargar las variables de entorno
+require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/db');
 const trainerRoutes = require('./routes/trainerRoutes');
 const pokemonRoutes = require('./routes/pokemonRoutes');
 
 const app = express();
-
-//conectar a la base de datos
 connectDB();
 
 app.use(express.json());
 
-app.use('/api', pokemonRoutes);
+// Rutas para la API
+app.use('/api/pokemons', pokemonRoutes); // Rutas para pokemons
+app.use('/api/trainers', trainerRoutes); // Rutas para entrenadores
 
-//definir la ruta de prueba
+// Ruta de prueba inicial
 app.get('/', (req, res) => {
 	res.send('Server funcionando :P, yeeih!');
 });
 
-//ruta de los entrenadores
-app.use('/api/trainers', trainerRoutes);
-
-
 const PORT = process.env.PORT || 5050;
-app.listen(PORT,() => {
+app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
 });

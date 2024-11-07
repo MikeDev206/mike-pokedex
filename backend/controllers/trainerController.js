@@ -3,7 +3,7 @@ const Trainer = require('../models/Trainer');
 //obtiene todos los entrenadores
 const getTrainers = async (req, res) => {
 	try {
-		const trainers = await Trainer.find().sort({ nombre: 1 });
+		const trainers = await Trainer.find().sort({ name: 1 });
 		res.json(trainers);
 	} catch (error) {
 		res.status(500).json({ error: 'Error al obtener los entrenadores' });
