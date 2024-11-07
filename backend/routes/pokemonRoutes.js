@@ -3,10 +3,10 @@ const router = express.Router();
 const axios = require('axios');
 
 //ruta para obtener todos los Pokémon con paginación y búsqueda
-router.get('/pokemons', async (req, res) => {
+router.get('/', async (req, res) => {
 	const { limit = 10, page = 1, search } = req.query;
 
-	//validar que limit y page sean números
+	//valida que limit y page sean números
 	if (isNaN(limit) || isNaN(page) || limit <= 0 || page <= 0) {
 		return res.status(400).json({ error: 'Parámetro inválido' });
 	}
