@@ -9,7 +9,6 @@ const app = express();
 //conectar a la base de datos
 connectDB();
 
-//iniciar el middleware
 app.use(express.json());
 
 //definir la ruta de prueba
