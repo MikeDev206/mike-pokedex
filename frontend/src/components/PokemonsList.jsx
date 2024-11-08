@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import jsPDF from "jspdf";
 
 const PokemonList = () => {
 	const [pokemons, setPokemons] = useState([]);
@@ -26,6 +27,16 @@ const PokemonList = () => {
 			});
 	}, [limit, page, search]);
 
+	//funcion para el pdf
+	const handleDownload = () => {
+		const doc = new jsPDF();
+		doc.text("Lista de Pokemons", 20, 10);
+		pokemons.forEach((pokemon, index) => {
+			doc.text(`${index + 1}. ${pokemon.name}`, 20, 20 + index * 10);
+		});
+		doc.save("pokemons.pdf");
+	}
+
 	return (
 		<>
 			<h1>Lista de Pokemons</h1>
@@ -38,6 +49,9 @@ const PokemonList = () => {
           setPage(1);
         }}
       />
+
+			<button onClick={handleDownload}>Descargar PDF</button>
+
 			<div>
 				<label>
 					Pokemons por página: 
