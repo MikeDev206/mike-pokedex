@@ -3,11 +3,12 @@ import react from '@vitejs/plugin-react-swc';
 
 export default defineConfig({
   plugins: [react()],
-  root: './',
+  root: './frontend',
+  base: '/mike-pokedex/',
   build: {
-    outDir: 'dist',
+    outDir: '../dist',
     rollupOptions: {
-      input: './index.html',
+      input: './frontend/index.html',
     },
   },
   server: {
