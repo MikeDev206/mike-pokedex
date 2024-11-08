@@ -13,7 +13,7 @@ const fetchPokemons = async (limit, offset, search) => {
 }
 
 //ruta para obtener todos los Pokémon con paginación y búsqueda
-router.get('/pokemons', async (req, res) => {
+router.get('/', async (req, res) => {
 	const { limit = 10, page = 1, search } = req.query;
 	const offset = (page - 1) * limit;
 
