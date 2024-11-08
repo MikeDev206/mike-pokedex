@@ -89,6 +89,23 @@ const TrainerList = () => {
 		});
 	};
 
+	//exporta a csv
+	const exportToCSV = async () => {
+		try {
+			const response = await axios.get("/api/trainers/csv", {
+				responseType: "blob",
+			});
+			const url = window.URL.createObjectURL(new Blob([response.data]));
+			const link = document.createElement("a");
+			link.href = url;
+			link.setAttribute("download", "trainers.csv");
+			document.body.appendChild(link);
+			link.click();
+		} catch (error) {
+			console.error("Error al exportar a CSV: ", error);
+		}
+	};
+
 	return (
 		<div>
 			<h1>Lista de Entrenadores</h1>
@@ -111,6 +128,8 @@ const TrainerList = () => {
 			) : (
 				<p>Aún no hay entrenadores registrados</p>
 			)}
+
+			<button onClick={exportToCSV}>Exportar a CSV</button>
 
 			<h2>
 				{editingTrainer ? "Editar Entrenador" : "Agregar Nuevo Entrenador"}
