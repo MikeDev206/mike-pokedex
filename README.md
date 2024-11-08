@@ -10,8 +10,8 @@ Este proyecto es una Pokedex que consume la [PokeAPI](https://pokeapi.co/docs/v2
 
 El proyecto está dividido en dos módulos principales:
 
-- **Módulo Uno**: Consumo de la PokeAPI con paginación, filtros y la opción de descargar un PDF con la lista de pokémons.
-- **Módulo Dos**: CRUD de entrenadores con la opción de exportar la lista de entrenadores en formato CSV.
+- [Módulo Uno: Consumo de PokeAPI, Paginación, Filtros, y Generación de PDF](#módulo-uno-consumo-de-pokeapi-paginación-filtros-y-generación-de-pdf)
+- [Módulo Dos: CRUD de Entrenadores y Generación de CSV](#módulo-dos-crud-de-entrenadores-y-generación-de-csv)
 
 Para detalles específicos del flujo de trabajo, puedes revisar el [Tablero de GitHub Projects](https://github.com/users/MikeDev206/projects/1/views/1?pane=issue&itemId=86258522), donde está organizada cada tarea y su estado.
 
