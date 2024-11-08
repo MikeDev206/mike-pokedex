@@ -11,16 +11,21 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-// Rutas para la API
+// Ruta de prueba inicial
+app.get('/', (req, res) => {
+	res.send('API funcionando :P, yeeih!');
+});
+
+const trainerRoutes = require('./routes/trainerRoutes');
+const pokemonRoutes = require('./routes/pokemonRoutes');
+
 app.use('/api/pokemons', pokemonRoutes); 
 app.use('/api/trainers', trainerRoutes); 
 
-// Ruta de prueba inicial
-app.get('/', (req, res) => {
-	res.send('Server funcionando :P, yeeih!');
-});
 
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
 });
+
+module.exports = app;
