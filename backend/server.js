@@ -16,9 +16,6 @@ app.get('/', (req, res) => {
 	res.send('API funcionando :P, yeeih!');
 });
 
-const trainerRoutes = require('./routes/trainerRoutes');
-const pokemonRoutes = require('./routes/pokemonRoutes');
-
 app.use('/api/pokemons', pokemonRoutes); 
 app.use('/api/trainers', trainerRoutes); 
 
